@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- عنوان الصفحة: يظهر في تبويب المتصفح ونتائج محركات البحث -->
+  <title>المختار للمقاولات | ترميم - تشطيب - ديكور</title>
+
+  <!-- استدعاء خط تجوال العربي والمكتبات الخارجية -->
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ======================================================================
+       اسم الجزء: شريط التنقل العلوي (Navbar)
+       الفكرة: تثبيت شريط علوي للتنقل السريع بين أقسام الصفحة وفتح واتساب مباشرة.
+       الربط: يعتمد على (.navbar و .nav-links.active) في style.css و (#menuToggle و #navLinks) في script.js.
+       مناطق أمان للتعديل: أرقام الواتساب ونصوص الروابط آمنة؛ احفظ id="menuToggle" و id="navLinks" دون تغيير إلا مع تحديث script.js.
+       --- بداية الجزء ---
+       ====================================================================== -->
+  <header class="navbar">
+    <div class="container nav-content">
+      <a href="#home" class="logo">
+        <!-- صورة الشعار: أبعادها مضبوطة في style.css عبر (.logo-img) -->
+        <img src="images/logo.png" alt="شعار المختار للمقاولات" class="logo-img">
+        <span>المختار <strong>للمقاولات</strong></span>
+      </a>
+
+      <nav class="nav-links" id="navLinks">
+        <a href="#home">الرئيسية</a>
+        <a href="#about">من نحن</a>
+        <a href="#services">خدماتنا</a>
+        <a href="#process">آلية العمل</a>
+        <a href="#calculator">حاسبة التكاليف</a>
+        <a href="#portfolio">أعمالنا</a>
+        <a href="#contact">تواصل معنا</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="https://wa.me/967770044255" target="_blank" rel="noopener noreferrer" class="btn btn-gold nav-btn">
+          <i class="fa-brands fa-whatsapp"></i> اطلب معاينة
+        </a>
+        <!-- زر قائمة الجوال: يظهر في الشاشات الصغيرة ويفعّل القائمة عبر script.js -->
+        <button class="menu-toggle" id="menuToggle" aria-label="القائمة">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+  <!-- --- نهاية الجزء: شريط التنقل العلوي --- -->
+
+  <!-- ======================================================================
+       اسم الجزء: الواجهة الرئيسية (Hero Section)
+       الفكرة: إبراز هوية الشركة وموقعها ورسالتها وأزرار الانتقال السريعة للطلب أو المعرض.
+       الربط: يعتمد على (.hero و .hero-content و .badge و .hero-buttons) في style.css.
+       مناطق أمان للتعديل: العناوين والفقرة ونصوص الأزرار وروابط (#contact و #portfolio) آمنة للتعديل.
+       --- بداية الجزء ---
+       ====================================================================== -->
+  <section id="home" class="hero">
+    <div class="hero-overlay"></div>
+    <div class="container hero-content">
+      <span class="badge"><i class="fa-solid fa-location-dot"></i> صنعاء - الجمهورية اليمنية</span>
+      <h1>المختار للمقاولات..<br>نبني الثقة، ونُبدع في التفاصيل</h1>
+      <p>شريكك الموثوق في أعمال الترميم، التشطيبات المتكاملة، وتنفيذ الديكورات العصرية بأعلى معايير الجودة الهندسية والالتزام التام بالمواعيد.</p>
+      <div class="hero-buttons">
+        <a href="#contact" class="btn btn-gold">اطلب معاينة أو عرض سعر</a>
+        <a href="#portfolio" class="btn btn-outline">تصفح أعمالنا</a>
+      </div>
+    </div>
+  </section>
+  <!-- --- نهاية الجزء: الواجهة الرئيسية --- -->
+
+  <!-- ======================================================================
+       اسم الجزء: قسم من نحن (About Section)
+       الفكرة: تعريف الزائر بالشركة ورؤيتها الهندسية مع عرض أبرز المؤشرات والإحصائيات.
+       الربط: يعتمد على (.about-grid و .stats و .about-box) في style.css.
+       مناطق أمان للتعديل: جميع النصوص والأرقام والأيقونات قابلة للتعديل المباشر.
+       --- بداية الجزء ---
+       ====================================================================== -->
+  <section id="about" class="section about">
+    <div class="container about-grid">
+      <div class="about-text">
+        <h2 class="section-title">من نحن</h2>
+        <p>في <strong>المختار للمقاولات</strong>، نؤمن بأن كل مبنى يحمل قصة، ومهمتنا هي تحويل رؤيتك إلى واقع ملموس يجمع بين المتانة والجمال. بخبرة هندسية وفنية متكاملة في صنعاء، نقدم حلولاً شاملة تبدأ من إعادة إحياء المباني وترميمها، مروراً بالتشطيبات الدقيقة، وصولاً إلى اللمسات الديكورية الفاخرة التي تمنح مساحتك طابعاً فريداً.</p>
+        <div class="stats">
+          <div class="stat-item">
+            <h3>100%</h3>
+            <span>التزام بالمواعيد</span>
+          </div>
+          <div class="stat-item">
+            <h3>+120</h3>
+            <span>مشروع منفذ</span>
+          </div>
+          <div class="stat-item">
+            <h3>جودة</h3>
+            <span>إشراف هندسي متكامل</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-box">
+        <i class="fa-solid fa-compass-drafting"></i>
+        <h3>رؤيتنا الهندسية</h3>
+        <p>الجمع بين أصالة البناء ودقة التنفيذ الحديث باستخدام أجود الخامات لضمان استدامة وفخامة تدوم لسنوات.</p>
+      </div>
+    </div>
+  </section>
+  <!-- --- نهاية الجزء: قسم من نحن --- -->
+
+  <!-- ======================================================================
+       اسم الجزء: قسم الخدمات (Services Section)
+       الفكرة: استعراض الخدمات الهندسية الأساسية في بطاقات متساوية ومنظمة.
+       الربط: يعتمد على (.services-grid و .service-card و .icon-box) في style.css.
+       مناطق أمان للتعديل: يمكنك إضافة أو تعديل أو حذف بطاقات (.service-card) بحرية.
+       --- بداية الجزء ---
+       ====================================================================== -->
+  <section id="services" class="section services">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">خدماتنا المتكاملة</h2>
+        <p>نقدم حلولاً هندسية متكاملة تلبي كافة احتياجات البناء والتجديد</p>
+      </div>
+
+      <div class="services-grid">
+        <!-- خدمة 1 -->
+        <div class="service-card">
+          <div class="icon-box"><i class="fa-solid fa-trowel-bricks"></i></div>
+          <h3>الترميم والصيانة الهندسية</h3>
+          <p>نعيد للمباني قوتها ورونقها؛ تشمل خدماتنا معالجة التشققات والرطوبة، تدعيم الهياكل، وتجديد الواجهات والتمديدات الكهربائية والصحية بأحدث الأساليب.</p>
+        </div>
+
+        <!-- خدمة 2 -->
+        <div class="service-card">
+          <div class="icon-box"><i class="fa-solid fa-paint-roller"></i></div>
+          <h3>التشطيبات المتكاملة (تسليم مفتاح)</h3>
+          <p>نعتني بكافة مراحل التشطيب الداخلي والخارجي؛ من أعمال اللياسة، البلاط والرخام، الدهانات الحديثة، وحتى الأسقف المستعارة والجبس بورد بدقة متناهية.</p>
+        </div>
+
+        <!-- خدمة 3 -->
+        <div class="service-card">
+          <div class="icon-box"><i class="fa-solid fa-couch"></i></div>
+          <h3>التصميم الداخلي والديكور</h3>
+          <p>نصمم وننفذ ديكورات عصرية وكلاسيكية تناسب ذوقك وميزانيتك، مع توزيع مدروس للإضاءة والألوان يضفي فخامة وراحة على المنازل، الفلل، والمكاتب التجارية.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- --- نهاية الجزء: قسم الخدمات --- -->
+<!-- ======================================================================
+       اسم الجزء: قسم معرض الأعمال التفاعلي (Portfolio Section)
+       الفكرة: عرض مشاريع منفذة مع إمكانية تصفيتها حسب الفئة وفتحها في نافذة مكبرة،
+               بالإضافة إلى أداة مقارنة (قبل وبعد) التفاعلية أسفل شبكة المشاريع.
+       الربط: يعتمد على (.filter-btn و .portfolio-item و .hide) في style.css، وعلى
+              (data-filter و data-category و h3 و p و img) في script.js.
+       مناطق أمان للتعديل: الصور والعناوين والمواقع آمنة؛ عند إضافة مشروع جديد اجعل قيمة
+              data-category مطابقة لأحد أزرار الفلترة (renovation | finishing | decor).
+       --- بداية الجزء ---
+       ====================================================================== -->
+  <section id="portfolio" class="section portfolio">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">معرض أعمالنا</h2>
+        <p>نماذج من مشاريعنا المنفذة في صنعاء بأعلى معايير الدقة والجودة</p>
+      </div>
+
+      <!-- أزرار التصفية (الفلترة) -->
+      <div class="filter-buttons">
+        <button class="filter-btn active" data-filter="all">جميع الأعمال</button>
+        <button class="filter-btn" data-filter="renovation">الترميم والصيانة</button>
+        <button class="filter-btn" data-filter="finishing">التشطيبات</button>
+        <button class="filter-btn" data-filter="decor">الديكور الداخلي</button>
+      </div>
+
+      <!-- شبكة المشاريع -->
+      <div class="portfolio-grid">
+        <!-- مشروع 1 -->
+        <div class="portfolio-item" data-category="decor">
+          <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=800&q=80" alt="تصميم ديكور مجلس حديث">
+          <div class="portfolio-overlay">
+            <span class="category-tag">ديكور داخلي</span>
+            <h3>تصميم وتنفيذ ديكور مجلس عصري</h3>
+            <p>صنعاء - حي حدة</p>
+          </div>
+        </div>
+
+        <!-- مشروع 2 -->
+        <div class="portfolio-item" data-category="finishing">
+          <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80" alt="تشطيب فيلا سكنية">
+          <div class="portfolio-overlay">
+            <span class="category-tag">تشطيبات متكاملة</span>
+            <h3>تشطيب فيلا سكنية (تسليم مفتاح)</h3>
+            <p>صنعاء - بيت بوس</p>
+          </div>
+        </div>
+
+        <!-- مشروع 3 -->
+        <div class="portfolio-item" data-category="renovation">
+          <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=800&q=80" alt="ترميم واجهة مبنى">
+          <div class="portfolio-overlay">
+            <span class="category-tag">ترميم وصيانة</span>
+            <h3>إعادة تأهيل وترميم واجهة مبنى</h3>
+            <p>صنعاء - شارع الستين</p>
+          </div>
+        </div>
+
+        <!-- مشروع 4 -->
+        <div class="portfolio-item" data-category="decor">
+          <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=800&q=80" alt="ديكورات جبس بورد وإضاءة">
+          <div class="portfolio-overlay">
+            <span class="category-tag">ديكور داخلي</span>
+            <h3>أسقف جبس بورد وتوزيع إضاءة مخفية</h3>
+            <p>صنعاء - الأصبحي</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ====================================================================
+           اسم الجزء الفرعي: مقارنة (قبل وبعد) التفاعلية (Before & After Comparison)
+           الفكرة: تمكين الزائر من سحب شريط المقارنة أفقياً لرؤية التحول بين حالة
+                   المشروع (قبل) و(بعد) والتنقل بين عدة نماذج.
+           الربط: يعتمد على (.ba-wrapper و .ba-stage و .ba-range و .ba-handle) في style.css،
+                  وعلى (#baSelect و #baRange و #baAfterImg و #baBeforeImg و #baBeforeLabel
+                  و #baAfterLabel و #baDivider و #baHandle و #baCaption) في script.js.
+           مناطق أمان للتعديل: أزرار اختيار النماذج آمنة؛ وعند توفر صور حقيقية لـ (قبل)
+                  و(بعد) عدّل قيم data-before و data-after في أزرار #baSelect.
+           --- بداية الجزء الفرعي ---
+           ==================================================================== -->
+      <div class="ba-wrapper" id="beforeAfterBox">
+        <div class="ba-header">
+          <div>
+            <h3>مقارنة حية: قبل وبعد التنفيذ</h3>
+            <p id="baCaption">تجديد وتشطيب مجلس وصالة — صنعاء</p>
+          </div>
+
+          <!-- أزرار التبديل بين نماذج المقارنة (الصور الحالية توضيحية مؤقتة) -->
+          <div class="ba-switchers" id="baSelect" role="group" aria-label="نماذج المقارنة">
+            <button
+              type="button"
+              class="ba-preset-btn active"
+              data-caption="تجديد وتشطيب مجلس وصالة — صنعاء"
+              data-before="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=900&q=80"
+              data-after="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=900&q=80"
+            >نموذج 1: ديكور وتشطيب</button>
+
+            <button
+              type="button"
+              class="ba-preset-btn"
+              data-caption="ترميم وتأهيل واجهة ومساحة داخلية — صنعاء"
+              data-before="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=900&q=80"
+              data-after="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=900&q=80"
+            >نموذج 2: ترميم وتطوير</button>
+          </div>
+        </div>
+
+        <div class="ba-stage" id="baStage">
+          <!-- الصورة الكاملة (بعد التنفيذ) -->
+          <img
+            id="baAfterImg"
+            src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=900&q=80"
+            alt="حالة المشروع بعد التنفيذ"
+            class="ba-img ba-after"
+          >
+
+          <!-- طبقة (قبل التنفيذ) التي يُقص عرضها حسب موضع المؤشر -->
+          <div class="ba-before-clip" id="baBeforeClip">
+            <img
+              id="baBeforeImg"
+              src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=900&q=80"
+              alt="حالة المشروع قبل التنفيذ"
+              class="ba-img ba-before"
+            >
+          </div>
+
+          <span class="ba-label ba-label-after" id="baAfterLabel">بعد</span>
+          <span class="ba-label ba-label-before" id="baBeforeLabel">قبل</span>
+
+          <!-- الخط الفاصل ومقبض السحب -->
+          <div class="ba-divider" id="baDivider">
+            <div class="ba-handle" id="baHandle" aria-hidden="true">
+              <i class="fa-solid fa-arrows-left-right"></i>
+            </div>
+          </div>
+
+          <!-- شريط تحكم نطاقي متوافق مع الفأرة واللمس ولوحة المفاتيح -->
+          <input
+            type="range"
+            id="baRange"
+            class="ba-range"
+            min="0"
+            max="100"
+            value="50"
+            aria-label="نسبة المقارنة بين قبل وبعد"
+          >
+        </div>
+      </div>
+      <!-- --- نهاية الجزء الفرعي: مقارنة (قبل وبعد) التفاعلية --- -->
+
+    </div>
+  </section>
+  <!-- --- نهاية الجزء: قسم معرض الأعمال التفاعلي --- -->
+
+  <!-- ======================================================================
+       اسم الجزء: قسم آلية العمل (Process Section)
+       الفكرة: توضيح مراحل تنفيذ المشروع خطوة بخطوة لبناء الثقة والوضوح مع العميل.
+       الربط: يعتمد على (.process و .process-grid و .process-step و .step-num) في style.css.
+       مناطق أمان للتعديل: نصوص الخطوات وأرقامها قابلة للتعديل بسهولة.
+       --- بداية الجزء ---
+       ====================================================================== -->
+  <section id="process" class="section process">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">كيف نعمل معك؟</h2>
+        <p>خطوات واضحة ومنظمة تضمن لك راحة البال وجودة التنفيذ</p>
+      </div>
+
+      <div class="process-grid">
+        <div class="process-step">
+          <span class="step-num">01</span>
+          <h3>المعاينة والرفع المساحي</h3>
+          <p>زيارة ميدانية لموقع المشروع في صنعاء لدراسة الحالة الإنشائية وفهم متطلباتك.</p>
+        </div>
+
+        <div class="process-step">
+          <span class="step-num">02</span>
+          <h3>التصميم وعرض السعر</h3>
+          <p>تقديم تصور هندسي وجدول كميات وأسعار شفاف ومفصل يناسب ميزانيتك.</p>
+        </div>
+
+        <div class="process-step">
+          <span class="step-num">03</span>
+          <h3>التنفيذ والإشراف</h3>
+          <p>بدء العمل بأيدي فنيين مهرة وتحت إشراف هندسي مستمر بأجود الخامات.</p>
+        </div>
+
+        <div class="process-step">
+          <span class="step-num">04</span>
+          <h3>التسليم النهائي</h3>
+          <p>فحص كافة التفاصيل بدقة وتسليمك المشروع جاهزاً في الموعد المحدد تماماً.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- --- نهاية الجزء: قسم آلية العمل --- -->
+
+  <!-- ======================================================================
+       اسم الجزء: نافذة تكبير الصور المنبثقة (Lightbox Modal)
+       الفكرة: حاوية مخفية افتراضياً تعرض صورة المشروع مكبرة عند النقر عليها.
+       الربط: يعتمد على (.modal و .modal.show و .modal-content و .close-modal) في style.css،
+              وعلى (#imageModal و #modalImg و #modalCaption و .close-modal) في script.js.
+       مناطق أمان للتعديل: احفظ المعرفات والكلاسات المذكورة في الربط لتجنب تعطل النافذة.
+       --- بداية الجزء ---
+       ====================================================================== -->
+  <div id="imageModal" class="modal">
+    <span class="close-modal">&times;</span>
+    <img class="modal-content" id="modalImg" alt="صورة المشروع">
+    <div id="modalCaption"></div>
+  </div>
+  <!-- --- نهاية الجزء: نافذة تكبير الصور المنبثقة --- -->
+   <!-- ======================================================================
+       اسم الجزء: قسم حاسبة التكاليف التقديرية (Cost Calculator Section)
+       الفكرة: تمكين العميل من إدخال المساحة واختيار نوع الخدمة ومستوى التنفيذ
+               للحصول على نطاق سعري تقريبي مبدئي ونقله لنموذج الواتساب.
+       الربط: يعتمد على (.calculator-section و .calculator-box و .calc-result-box) في style.css،
+              وعلى (#calcService و #calcArea و #calcQuality و #calcBtn و #calcResult و #sendCalcToWhatsapp)
+              في script.js.
+       مناطق أمان للتعديل: نصوص التسميات وخيارات القوائم آمنة؛ احفظ المعرفات (id) لأن
+              script.js يعتمد عليها لقراءة القيم وعرض النتيجة.
+       --- بداية الجزء ---
+       ====================================================================== -->
+  <section id="calculator" class="section calculator-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">حاسبة التكاليف التقديرية</h2>
+        <p>احسب تكلفة مبدئية تقريبية لمشروعك قبل طلب المعاينة الميدانية في صنعاء</p>
+      </div>
+
+      <div class="calculator-box">
+        <div class="calc-grid">
+          <!-- حقل اختيار نوع الخدمة -->
+          <div class="form-group">
+            <label for="calcService">نوع الخدمة</label>
+            <select id="calcService">
+              <option value="renovation">ترميم وصيانة هندسية</option>
+              <option value="finishing" selected>تشطيبات متكاملة (تسليم مفتاح)</option>
+              <option value="decor">تصميم وديكور داخلي</option>
+            </select>
+          </div>
+
+          <!-- حقل إدخال المساحة بالمتر المربع -->
+          <div class="form-group">
+            <label for="calcArea">المساحة التقريبية (م²)</label>
+            <input type="number" id="calcArea" min="10" max="10000" value="150" placeholder="مثال: 150">
+          </div>
+
+          <!-- حقل اختيار مستوى التشطيب/التنفيذ -->
+          <div class="form-group">
+            <label for="calcQuality">مستوى التنفيذ والخامات</label>
+            <select id="calcQuality">
+              <option value="economy">اقتصادي عملي</option>
+              <option value="standard" selected>قياسي ممتاز</option>
+              <option value="luxury">فاخر (VIP)</option>
+            </select>
+          </div>
+        </div>
+
+        <button type="button" id="calcBtn" class="btn btn-gold full-width">
+          <i class="fa-solid fa-calculator"></i> احسب التكلفة التقديرية
+        </button>
+
+        <!-- صندوق عرض النتيجة التقديرية (يُحدّث عبر script.js) -->
+        <div id="calcResult" class="calc-result-box" aria-live="polite">
+          <p class="calc-hint">أدخل المساحة واختر الخدمة والمستوى ثم اضغط على زر الحساب لعرض التقدير المبدئي.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- --- نهاية الجزء: قسم حاسبة التكاليف التقديرية --- -->
+
+  <!-- ======================================================================
+       اسم الجزء: قسم تواصل معنا ونموذج طلب التسعير (Contact Section)
+       الفكرة: عرض قنوات التواصل المباشرة وتمكين العميل من إرسال طلب معاينة عبر واتساب.
+       الربط: يعتمد على (.contact-grid و .info-list و .contact-form-box) في style.css،
+              وعلى (#whatsappForm و #clientName و #serviceType و #projectDetails) في script.js.
+       مناطق أمان للتعديل: بيانات التواصل وخيارات <select> آمنة للتعديل؛ احفظ معرفات الحقول
+              لأن script.js يقرأ قيمها مباشرة.
+       --- بداية الجزء ---
+       ====================================================================== -->
+  <section id="contact" class="section contact">
+    <div class="container contact-grid">
+      <!-- معلومات التواصل -->
+      <div class="contact-info">
+        <h2 class="section-title">تواصل معنا</h2>
+        <p>هل لديك مشروع ترميم، تشطيب، أو ترغب في تجديد ديكور منزلك أو مكتبك؟ فريقنا الهندسي جاهز للمعاينة وتقديم الاستشارة.</p>
+
+        <div class="info-list">
+          <div class="info-item">
+            <i class="fa-solid fa-location-dot"></i>
+            <div>
+              <h4>الموقع</h4>
+              <span>صنعاء - الجمهورية اليمنية</span>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <i class="fa-solid fa-phone-volume"></i>
+            <div>
+              <h4>الهاتف والواتساب</h4>
+              <span dir="ltr">00967 770 044 255</span>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <i class="fa-solid fa-envelope"></i>
+            <div>
+              <h4>البريد الإلكتروني</h4>
+              <span>alwsabi770@gmail.com</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- نموذج طلب معاينة / تسعير -->
+      <div class="contact-form-box">
+        <h3>اطلب معاينة أو عرض سعر سريع</h3>
+        <form id="whatsappForm">
+          <div class="form-group">
+            <label for="clientName">الاسم الكامل</label>
+            <input type="text" id="clientName" placeholder="أدخل اسمك الكريم" required>
+          </div>
+
+          <div class="form-group">
+            <label for="serviceType">نوع الخدمة المطلوبة</label>
+            <select id="serviceType" required>
+              <option value="ترميم وصيانة">ترميم وصيانة</option>
+              <option value="تشطيبات متكاملة">تشطيبات متكاملة (تسليم مفتاح)</option>
+              <option value="تصميم وديكور داخلي">تصميم وديكور داخلي</option>
+              <option value="استشارة هندسية عامة">استشارة هندسية عامة</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="projectDetails">تفاصيل المشروع أو الموقع في صنعاء</label>
+            <textarea id="projectDetails" rows="4" placeholder="اكتب وصفاً مختصراً للمشروع أو المساحة التقريبية..." required></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-gold full-width">
+            <i class="fa-brands fa-whatsapp"></i> إرسال الطلب عبر واتساب مباشرة
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+  <!-- --- نهاية الجزء: قسم تواصل معنا ونموذج طلب التسعير --- -->
+
+  <!-- ======================================================================
+       اسم الجزء: ذيل الصفحة وزر الواتساب العائم (Footer & Floating WhatsApp)
+       الفكرة: توفير روابط تنقل مختصرة وحقوق الملكية مع زر تواصل سريع ملازم للصفحة.
+       الربط: يعتمد على (.footer و .footer-content و .whatsapp-float) في style.css.
+       مناطق أمان للتعديل: النصوص والروابط وسنة الحقوق ورقم الواتساب آمنة للتعديل.
+       --- بداية الجزء ---
+       ====================================================================== -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <div class="footer-brand">
+        <a href="#home" class="logo">
+          <i class="fa-solid fa-building-columns"></i>
+          <span>المختار <strong>للمقاولات</strong></span>
+        </a>
+        <p>نبني الثقة، ونُبدع في التفاصيل. شريكك الهندسي الموثوق في صنعاء.</p>
+      </div>
+
+      <div class="footer-links">
+        <a href="#home">الرئيسية</a>
+        <a href="#about">من نحن</a>
+        <a href="#services">خدماتنا</a>
+        <a href="#portfolio">أعمالنا</a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>جميع الحقوق محفوظة &copy; 2026 شركة المختار للمقاولات - صنعاء</p>
+    </div>
+  </footer>
+
+  <!-- زر واتساب عائم -->
+  <a href="https://wa.me/967770044255" target="_blank" rel="noopener noreferrer" class="whatsapp-float" title="تواصل معنا عبر واتساب">
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
+  <!-- --- نهاية الجزء: ذيل الصفحة وزر الواتساب العائم --- -->
+
+  <!-- ملف الجافاسكريبت: يُوضع في نهاية body لضمان تحميل عناصر الصفحة أولاً -->
+  <script src="script.js"></script>
+</body>
+</html>

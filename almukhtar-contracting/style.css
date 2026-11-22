@@ -1,0 +1,1090 @@
+/* ==========================================================================
+   ملف التنسيقات الرئيسي - موقع المختار للمقاولات
+   الفكرة: ضبط الهوية البصرية (رمادي داكن/متوسط/فاتح مع ذهبي)، التخطيط الشبكي،
+           والتجاوب مع مختلف الشاشات.
+   الربط: يربط كلاسات وعناصر index.html ويستجيب لكلاسات (.hide و .active و .show)
+          التي يتحكم بها script.js.
+   ملاحظة: التعليقات إرشادية فقط ولا تؤثر على سرعة أو أداء المتصفح.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   اسم الجزء: المتغيرات اللونية والإعدادات العامة (:root, *, body, .container)
+   الفكرة: توحيد الألوان والخطوط ومنع التمرير الأفقي وضبط عرض حاوية المحتوى.
+   مناطق أمان للتعديل: تغيير قيم الألوان في :root يحدّث كامل الموقع تلقائياً.
+   --- بداية الجزء ---
+   -------------------------------------------------------------------------- */
+:root {
+  --dark-gray: #1E242B;
+  --medium-gray: #2C353F;
+  --light-gray: #F4F6F8;
+  --text-gray: #5A6572;
+  --gold: #D4A359;
+  --gold-hover: #b88840;
+  --white: #FFFFFF;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Tajawal', sans-serif;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--white);
+  color: var(--dark-gray);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+/* --- نهاية الجزء: المتغيرات اللونية والإعدادات العامة --- */
+
+/* --------------------------------------------------------------------------
+   اسم الجزء: الأزرار (.btn, .btn-gold, .btn-outline)
+   الفكرة: تنسيق الأزرار الأساسية والثانوية وحالات التفاعل عند المرور عليها.
+   مناطق أمان للتعديل: الحشوة (padding) ونصف قطر الحواف (border-radius) والألوان آمنة.
+   --- بداية الجزء ---
+   -------------------------------------------------------------------------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 26px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 700;
+  transition: 0.3s ease;
+  cursor: pointer;
+}
+
+.btn-gold {
+  background-color: var(--gold);
+  color: var(--dark-gray);
+}
+
+.btn-gold:hover {
+  background-color: var(--gold-hover);
+  color: var(--white);
+}
+
+.btn-outline {
+  border: 2px solid var(--white);
+  color: var(--white);
+}
+
+.btn-outline:hover {
+  background-color: var(--white);
+  color: var(--dark-gray);
+}
+/* --- نهاية الجزء: الأزرار --- */
+
+/* --------------------------------------------------------------------------
+   اسم الجزء: شريط التنقل وأبعاد الشعار (.navbar, .logo, .logo-img, .nav-links)
+   الفكرة: إبقاء شريط التنقل ثابتاً في الأعلى مع عرض شعار واضح ومتوازن دون ضغط الروابط.
+   الربط: .nav-links.active يفعّله script.js في الجوال.
+   مناطق أمان للتعديل: عدّل height و max-width في .logo-img لتكبير/تصغير الشعار، وزد
+          padding-top في .hero إذا زاد ارتفاع الشريط.
+   --- بداية الجزء ---
+   -------------------------------------------------------------------------- */
+.navbar {
+  background-color: var(--dark-gray);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 1000;
+  padding: 10px 0;
+  border-bottom: 2px solid rgba(212, 163, 89, 0.25);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.nav-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--white);
+  font-size: 1.35rem;
+  text-decoration: none;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.logo i,
+.logo strong {
+  color: var(--gold);
+}
+
+.logo-img {
+  height: 72px;
+  width: auto;
+  max-width: 240px;
+  object-fit: contain;
+  border-radius: 6px;
+  display: block;
+}
+
+.nav-links {
+  display: flex;
+  gap: 25px;
+}
+
+.nav-links a {
+  color: #E2E8F0;
+  text-decoration: none;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.nav-links a:hover {
+  color: var(--gold);
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.menu-toggle {
+  display: none;
+  background: transparent;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  font-size: 1.4rem;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+/* --- نهاية الجزء: شريط التنقل وأبعاد الشعار --- */
+
+/* --------------------------------------------------------------------------
+   اسم الجزء: الواجهة الرئيسية (.hero, .hero-content, .badge, .hero-buttons)
+   الفكرة: تنسيق القسم الافتتاحي مع مسافة علوية مناسبة لتجنب تغطية الشريط الثابت.
+   مناطق أمان للتعديل: padding-top في .hero وقياس خط h1 و min-height آمنة للتعديل.
+   --- بداية الجزء ---
+   -------------------------------------------------------------------------- */
+.hero {
+  position: relative;
+  min-height: 85vh;
+  background: linear-gradient(135deg, var(--dark-gray) 0%, var(--medium-gray) 100%);
+  display: flex;
+  align-items: center;
+  color: var(--white);
+  padding: 120px 0 60px;
+}
+
+.hero-content {
+  max-width: 750px;
+}
+
+.badge {
+  display: inline-block;
+  background: rgba(212, 163, 89, 0.15);
+  color: var(--gold);
+  padding: 6px 16px;
+  border-radius: 50px;
+  font-size: 0.95rem;
+  margin-bottom: 20px;
+  border: 1px solid rgba(212, 163, 89, 0.4);
+}
+
+.hero h1 {
+  font-size: 2.8rem;
+  font-weight: 800;
+  line-height: 1.3;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  font-size: 1.15rem;
+  color: #CBD5E1;
+  margin-bottom: 35px;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+/* --- نهاية الجزء: الواجهة الرئيسية --- */
+
+/* --------------------------------------------------------------------------
+   اسم الجزء: التنسيقات المشتركة للأقسام (.section, .section-title, .section-header)
+   الفكرة: توحيد هوامش الأقسام وشكل العناوين والخط الذهبي أسفلها.
+   مناطق أمان للتعديل: قيم المسافات وسمك الخط الذهبي آمنة للتعديل.
+   --- بداية الجزء ---
+   -------------------------------------------------------------------------- */
+.section {
+  padding: 80px 0;
+}
+
+.section-title {
+  font-size: 2.1rem;
+  font-weight: 800;
+  color: var(--dark-gray);
+  margin-bottom: 15px;
+  position: relative;
+  display: inline-block;
+}
+
+.section-title::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 4px;
+  background-color: var(--gold);
+  margin-top: 8px;
+  border-radius: 2px;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.section-header .section-title::after {
+  margin: 8px auto 0;
+}
+
+.section-header p {
+  color: var(--text-gray);
+}
+/* --- نهاية الجزء: التنسيقات المشتركة للأقسام --- */
+
+/* --------------------------------------------------------------------------
+   اسم الجزء: قسم من نحن (.about-grid, .stats, .about-box)
+   الفكرة: توزيع النص والإحصائيات في عمود رئيسي مع بطاقة الرؤية في العمود الجانبي.
+   مناطق أمان للتعديل: نسب الأعمدة (1.4fr 1fr) وألوان البطاقة قابلة للتعديل.
+   --- بداية الجزء ---
+   -------------------------------------------------------------------------- */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.about-text p {
+  color: var(--text-gray);
+  font-size: 1.1rem;
+  margin-bottom: 30px;
+}
+
+.stats {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.stat-item h3 {
+  font-size: 1.8rem;
+  color: var(--gold);
+  font-weight: 800;
+}
+
+.stat-item span {
+  color: var(--dark-gray);
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.about-box {
+  background-color: var(--dark-gray);
+  color: var(--white);
+  padding: 40px;
+  border-radius: 12px;
+  border-right: 5px solid var(--gold);
+}
+
+.about-box i {
+  font-size: 2.5rem;
+  color: var(--gold);
+  margin-bottom: 15px;
+}
+
+.about-box h3 {
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+}
+
+.about-box p {
+  color: #CBD5E1;
+}
+/* --- نهاية الجزء: قسم من نحن --- */
+
+/* --------------------------------------------------------------------------
+   اسم الجزء: قسم الخدمات (.services, .services-grid, .service-card, .icon-box)
+   الفكرة: عرض كروت الخدمات في شبكة متجاوبة مع تأثير رفع خفيف وحد ذهبي عند التحويم.
+   مناطق أمان للتعديل: حشوة الكرت وحجم الأيقونة والظلال آمنة للتعديل.
+   --- بداية الجزء ---
+   -------------------------------------------------------------------------- */
+.services {
+  background-color: var(--light-gray);
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.service-card {
+  background: var(--white);
+  padding: 35px 30px;
+  border-radius: 10px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.04);
+  border-bottom: 3px solid transparent;
+  transition: 0.3s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-6px);
+  border-bottom-color: var(--gold);
+}
+
+.icon-box {
+  width: 60px;
+  height: 60px;
+  background-color: rgba(212, 163, 89, 0.15);
+  color: var(--gold);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  margin-bottom: 20px;
+}
+
+.service-card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 12px;
+  color: var(--dark-gray);
+}
+
+.service-card p {
+  color: var(--text-gray);
+  font-size: 0.98rem;
+}
+/* --- نهاية الجزء: قسم الخدمات --- */
+
+/* --------------------------------------------------------------------------
+   اسم الجزء: معرض الأعمال (.filter-buttons, .portfolio-grid, .portfolio-item)
+   الفكرة: تنسيق أزرار التصفية وشبكة المشاريع وتراكب النصوص فوق الصور.
+   الربط: .portfolio-item.hide يُستخدم عبر script.js لإخفاء العناصر غير المطابقة.
+   مناطق أمان للتعديل: ارتفاع الكرت (height: 290px) وتدرج التراكب آمنة للتعديل.
+   --- بداية الجزء ---
+   -------------------------------------------------------------------------- */
+.filter-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+
+.filter-btn {
+  padding: 10px 22px;
+  border: 2px solid var(--dark-gray);
+  background: transparent;
+  color: var(--dark-gray);
+  font-weight: 700;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+  background-color: var(--dark-gray);
+  color: var(--gold);
+}
+
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+}
+
+.portfolio-item {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  height: 290px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+}
+
+.portfolio-item.hide {
+  display: none;
+}
+
+.portfolio-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.portfolio-item:hover img {
+  transform: scale(1.08);
+}
+
+.portfolio-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(30, 36, 43, 0.95) 10%, rgba(30, 36, 43, 0.2) 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 25px;
+  color: var(--white);
+}
+
+.category-tag {
+  background-color: var(--gold);
+  color: var(--dark-gray);
+  font-size: 0.8rem;
+  font-weight: 800;
+  padding: 4px 12px;
+  border-radius: 4px;
+  width: fit-content;
+  margin-bottom: 8px;
+}
+
+.portfolio-overlay h3 {
+  font-size: 1.15rem;
+  margin-bottom: 4px;
+}
+
+.portfolio-overlay p {
+  font-size: 0.9rem;
+  color: #CBD5E1;
+}
+/* --- نهاية الجزء: معرض الأعمال --- */
+
+/* --------------------------------------------------------------------------
+   اسم الجزء: قسم آلية العمل (.process, .process-grid, .process-step, .step-num)
+   الفكرة: عرض الخطوات الأربع بأرقام خلفية خفيفة وتباين داكن واضح.
+   مناطق أمان للتعديل: ألوان الخطوات وحجم الأرقام قابلة للتعديل.
+   --- بداية الجزء ---
+   -------------------------------------------------------------------------- */
+.process {
+  background-color: var(--dark-gray);
+  color: var(--white);
+}
+
+.process .section-title {
+  color: var(--white);
+}
+
+.process .section-header p {
+  color: #CBD5E1;
+}
+
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 25px;
+}
+
+.process-step {
+  background: var(--medium-gray);
+  padding: 30px 25px;
+  border-radius: 10px;
+  position: relative;
+  border-top: 3px solid var(--gold);
+}
+
+.step-num {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: rgba(212, 163, 89, 0.25);
+  position: absolute;
+  top: 15px;
+  left: 20px;
+}
+
+.process-step h3 {
+  font-size: 1.2rem;
+  color: var(--gold);
+  margin-bottom: 10px;
+}
+
+.process-step p {
+  color: #E2E8F0;
+  font-size: 0.95rem;
+}
+/* --- نهاية الجزء: قسم آلية العمل --- */
+
+/* --------------------------------------------------------------------------
+   اسم الجزء: نافذة تكبير الصور (.modal, .modal.show, .modal-content, .close-modal)
+   الفكرة: إظهار الصورة المكبرة وسط شاشة معتمة عند إضافة كلاس .show عبر script.js.
+   الربط: .modal.show يتحكم به script.js عند النقر على المشروع أو الإغلاق.
+   مناطق أمان للتعديل: max-height وشفافية الخلفية وزر الإغلاق آمنة للتعديل.
+   --- بداية الجزء ---
+   -------------------------------------------------------------------------- */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 2000;
+  inset: 0;
+  background-color: rgba(15, 19, 24, 0.92);
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.modal.show {
+  display: flex;
+}
+
+.modal-content {
+  max-width: 90%;
+  max-height: 75vh;
+  border-radius: 8px;
+  border: 2px solid var(--gold);
+  object-fit: contain;
+}
+
+#modalCaption {
+  color: var(--white);
+  margin-top: 15px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.close-modal {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  color: var(--gold);
+  font-size: 2.5rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+/* --- نهاية الجزء: نافذة تكبير الصور --- */
+
+/* --------------------------------------------------------------------------
+   اسم الجزء: تنسيق حاسبة التكاليف التقديرية (.calculator-section, .calculator-box, .calc-result-box)
+   الفكرة: تنسيق حقول الحاسبة وبطاقة النتيجة بألوان متناغمة مع هوية الموقع (رمادي وذهبي).
+   الربط: يظهر محتوى #calcResult ديناميكياً عبر script.js.
+   مناطق أمان للتعديل: حشوة الصندوق وألوان الحدود والنتيجة قابلة للتعديل بحرية.
+   --- بداية الجزء ---
+   -------------------------------------------------------------------------- */
+.calculator-section {
+  background-color: var(--white);
+}
+
+.calculator-box {
+  max-width: 860px;
+  margin: 0 auto;
+  background-color: var(--light-gray);
+  padding: 35px;
+  border-radius: 12px;
+  border: 1px solid #E2E8F0;
+  border-top: 4px solid var(--gold);
+  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.04);
+}
+
+.calc-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-bottom: 10px;
+}
+
+.calc-result-box {
+  margin-top: 25px;
+  padding: 22px;
+  background-color: var(--dark-gray);
+  color: var(--white);
+  border-radius: 10px;
+  border-right: 4px solid var(--gold);
+}
+
+.calc-hint {
+  color: #CBD5E1;
+  font-size: 0.98rem;
+  text-align: center;
+}
+
+.calc-amount {
+  font-size: 1.55rem;
+  font-weight: 800;
+  color: var(--gold);
+  margin: 8px 0;
+}
+
+.calc-disclaimer {
+  font-size: 0.88rem;
+  color: #CBD5E1;
+  margin-bottom: 15px;
+}
+
+.calc-whatsapp-btn {
+  margin-top: 6px;
+}
+
+@media (max-width: 768px) {
+  .calculator-box {
+    padding: 22px;
+  }
+
+  .calc-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .calc-amount {
+    font-size: 1.3rem;
+  }
+}
+/* --- نهاية الجزء: تنسيق حاسبة التكاليف التقديرية --- */
+
+/* --------------------------------------------------------------------------
+   اسم الجزء: قسم التواصل ونموذج الطلب (.contact, .contact-grid, .info-list, .contact-form-box)
+   الفكرة: تنسيق معلومات التواصل في عمود ونموذج إدخال الطلب في عمود آخر.
+   مناطق أمان للتعديل: ألوان الحدود وحقول الإدخال والمسافات آمنة للتعديل.
+   --- بداية الجزء ---
+   -------------------------------------------------------------------------- */
+.contact {
+  background-color: var(--light-gray);
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 50px;
+  align-items: start;
+}
+
+.contact-info p {
+  color: var(--text-gray);
+  margin-bottom: 30px;
+}
+
+.info-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background: var(--white);
+  padding: 15px 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+}
+
+.info-item i {
+  font-size: 1.4rem;
+  color: var(--gold);
+  width: 40px;
+  height: 40px;
+  background: rgba(212, 163, 89, 0.15);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.info-item h4 {
+  font-size: 0.95rem;
+  color: var(--dark-gray);
+}
+
+.info-item span {
+  color: var(--text-gray);
+  font-weight: 500;
+}
+
+.contact-form-box {
+  background: var(--white);
+  padding: 35px;
+  border-radius: 12px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.05);
+  border-top: 4px solid var(--gold);
+}
+
+.contact-form-box h3 {
+  margin-bottom: 20px;
+  font-size: 1.4rem;
+}
+
+.form-group {
+  margin-bottom: 18px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #CBD5E1;
+  border-radius: 6px;
+  font-size: 1rem;
+  outline: none;
+  transition: 0.3s;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--gold);
+}
+
+.full-width {
+  width: 100%;
+  justify-content: center;
+  border: none;
+  font-size: 1.05rem;
+}
+/* --- نهاية الجزء: قسم التواصل ونموذج الطلب --- */
+
+/* --------------------------------------------------------------------------
+   اسم الجزء: الفوتر وزر الواتساب العائم (.footer, .whatsapp-float)
+   الفكرة: تنسيق نهاية الصفحة وحقوق النشر مع إبقاء زر واتساب ثابتاً في أسفل اليسار.
+   مناطق أمان للتعديل: ألوان الفوتر وموضع زر الواتساب (bottom / left) آمنة للتعديل.
+   --- بداية الجزء ---
+   -------------------------------------------------------------------------- */
+.footer {
+  background-color: var(--dark-gray);
+  color: var(--white);
+  padding-top: 50px;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-brand p {
+  color: #94A3B8;
+  margin-top: 10px;
+}
+
+.footer-links {
+  display: flex;
+  gap: 20px;
+}
+
+.footer-links a {
+  color: #CBD5E1;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.footer-links a:hover {
+  color: var(--gold);
+}
+
+.footer-bottom {
+  text-align: center;
+  padding: 20px 0;
+  color: #94A3B8;
+  font-size: 0.9rem;
+}
+
+.whatsapp-float {
+  position: fixed;
+  bottom: 25px;
+  left: 25px;
+  background-color: #25D366;
+  color: var(--white);
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+  z-index: 1000;
+  transition: 0.3s;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.1);
+}
+/* --- نهاية الجزء: الفوتر وزر الواتساب العائم --- */
+
+/* --------------------------------------------------------------------------
+   اسم الجزء: التجاوب مع الشاشات المتوسطة والهواتف (Media Queries)
+   الفكرة: تكييف حجم الشعار والخطوط وإظهار قائمة الجوال وتحويل الشبكات لعمود واحد.
+   الربط: .nav-links.active يفعّله script.js عند الضغط على زر القائمة في الجوال.
+   مناطق أمان للتعديل: نقاط الكسر (992px و 768px) ومقاسات الشعار الفرعية آمنة للتعديل.
+   --- بداية الجزء ---
+   -------------------------------------------------------------------------- */
+@media (max-width: 992px) {
+  .nav-links {
+    gap: 16px;
+    font-size: 0.95rem;
+  }
+
+  .logo {
+    font-size: 1.2rem;
+  }
+
+  .logo-img {
+    height: 62px;
+    max-width: 190px;
+  }
+}
+
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 100%;
+    background-color: var(--dark-gray);
+    padding: 20px;
+    border-bottom: 2px solid var(--gold);
+    text-align: center;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .nav-btn {
+    padding: 8px 14px;
+    font-size: 0.9rem;
+  }
+
+  .logo {
+    font-size: 1.1rem;
+    gap: 8px;
+  }
+
+  .logo-img {
+    height: 54px;
+    max-width: 150px;
+  }
+
+  .hero {
+    padding-top: 100px;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .about-grid,
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+}
+/* --- نهاية الجزء: التجاوب مع الشاشات المتوسطة والهواتف --- */
+
+/* --------------------------------------------------------------------------
+   اسم الجزء: تنسيق مقارنة قبل وبعد (.ba-wrapper, .ba-stage, .ba-before-clip, .ba-divider, .ba-range)
+   الفكرة: تنسيق إطار المقارنة التفاعلي والخط الفاصل ومقبض السحب والشارات مع دعم الجوال.
+   الربط: يتحكم script.js بعرض .ba-before-clip وموضع .ba-divider وعرض .ba-before
+          عبر قيمة #baRange وحجم #baStage.
+   مناطق أمان للتعديل: ارتفاع المرحلة (.ba-stage) وألوان الشارات والمقبض قابلة للتعديل.
+   --- بداية الجزء ---
+   -------------------------------------------------------------------------- */
+.ba-wrapper {
+  margin-top: 50px;
+  background-color: var(--light-gray);
+  padding: 28px;
+  border-radius: 12px;
+  border: 1px solid #E2E8F0;
+  border-top: 4px solid var(--gold);
+}
+
+.ba-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.ba-header h3 {
+  font-size: 1.35rem;
+  color: var(--dark-gray);
+  margin-bottom: 4px;
+}
+
+.ba-header p {
+  color: var(--text-gray);
+  font-size: 0.95rem;
+}
+
+.ba-switchers {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.ba-preset-btn {
+  padding: 8px 16px;
+  border-radius: 6px;
+  border: 1px solid var(--dark-gray);
+  background-color: var(--white);
+  color: var(--dark-gray);
+  font-weight: 700;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.ba-preset-btn.active,
+.ba-preset-btn:hover {
+  background-color: var(--dark-gray);
+  color: var(--gold);
+}
+
+.ba-stage {
+  position: relative;
+  width: 100%;
+  height: 410px;
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: var(--dark-gray);
+  user-select: none;
+}
+
+.ba-img {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.ba-after {
+  left: 0;
+}
+
+.ba-before-clip {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.ba-before-clip .ba-before {
+  right: 0;
+  left: auto;
+  max-width: none;
+}
+
+.ba-label {
+  position: absolute;
+  top: 14px;
+  padding: 5px 12px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: 800;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.ba-label-before {
+  right: 14px;
+  background-color: rgba(30, 36, 43, 0.85);
+  color: var(--white);
+}
+
+.ba-label-after {
+  left: 14px;
+  background-color: var(--gold);
+  color: var(--dark-gray);
+}
+
+.ba-divider {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 50%;
+  width: 3px;
+  background-color: var(--gold);
+  z-index: 4;
+  transform: translateX(50%);
+  pointer-events: none;
+}
+
+.ba-handle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: var(--gold);
+  color: var(--dark-gray);
+  border: 3px solid var(--white);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+}
+
+.ba-range {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: ew-resize;
+  z-index: 5;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .ba-wrapper {
+    padding: 18px;
+  }
+
+  .ba-stage {
+    height: 270px;
+  }
+}
+/* --- نهاية الجزء: تنسيق مقارنة قبل وبعد --- */
